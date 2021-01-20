@@ -34,6 +34,7 @@
         }
         .navbar {
             height: auto;
+            min-height: 80px;
             width: 100%;
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
@@ -50,120 +51,32 @@
                 background-position: 0% 50%;
             }
         }
-        button{
+        .button{
             background: transparent;
-            border-radius: 5px;
-            font-size: 25px;
-            cursor: pointer;
-            border-style: none;
-            outline: none;
-            padding: 25px;
-            text-align: center;
-
-            &:active{
-                transform: scale(0.98);
-            }
+            margin: 30px 20px 0;
+            border-radius: 10%;
+            font-size: 20px;
         }
-        button:hover{
+        .button:hover{
             background-color: lightgrey;
+            border-radius: 10%;
         }
-        .sticky-container{
-            height:auto;
-            width:100%;
-            display:flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        .sticky{
-            height:200px;
-            width:180px;
-            display:grid;
-            margin:10px;
-            padding:18px 10px 10px 10px;
-            box-sizing: border-box;
-            box-shadow: 6px 7px 12px -5px rgba(0,0,0,0.75);
-            font-size:24px;
-            background: #ffd31d;
-            overflow: auto;
-            animation: stickAnim .3s ease;
+        
+    </style>
+    <style>
 
-            &::-webkit-scrollbar {
-                display: none;  
-            }
-            &:focus {
-                outline: none;
-            }
-        .close {
-
-            font-size: 26px;
-            position: absolute;
-            top: 0;
-            right:0;
-            cursor: pointer;
-            width: 18px;
-
-            &:active {
-                transform: scale(0.98);
-            }
-        }
-        @keyframes stickAnim {
-            0%{
-                transform: scale(5);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
     </style>
 </head>
 <body>
     <div id="page-container">
         <div class="navbar">
-            <button id="addBtn">Add</button>
-            <button id="closeBtn">Delete</button>
+            <button class="button" id="add_new">Create</button>
+            <button class="button" id="delete_all" style="margin-left: 40px;">Delete</button>
         </div>
-        <div class="sticky-container">
-        </div>
+        <div class="sticky-container"></div>
     </div>
 </body>
 <script>
-   const addBtn = document.querySelector("#addBtn");
-
-addBtn.addEventListener("click", ()=>{
-    let stickyCont = document.querySelector(".sticky-container");
-    let stickySingle = document.createElement('div');
-    stickySingle.classList.add('sticky');
-    stickySingle.contentEditable = "true";
-    stickySingle.setAttribute = ("role","textbox");
-    stickyCont.appendChild(stickySingle);
-  
-    // Delete button
-    let close = document.createElement('span');
-    close.classList.add('close');
-    close.contentEditable = "false";
-    stickySingle.appendChild(close);
-  
-    // Delete function. used "for" to bind delete button with 
-    // coresponding stickynote
-    let stickies = document.getElementsByClassName("sticky");
-    let xs = document.getElementsByClassName("close");
-
-    for (let i = 0; i < stickies.length; i++){
-        xs[i].addEventListener("click", ()=> {
-            console.log(stickies.length);
-            stickies[i].style.display = "none";
-        });
-    }
     
-    // Random angle
-    function randomNumber(min, max) { 
-      return Math.random() * (max - min) + min; 
-    }
-    
-    let color = randomNumber(1,720);
-    stickySingle.style.filter = "hue-rotate(" + color +"deg)";
-});
-
-
 </script>
 </html>
