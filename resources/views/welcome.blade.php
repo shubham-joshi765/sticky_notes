@@ -51,13 +51,13 @@
                 background-position: 0% 50%;
             }
         }
-        .button{
+        button{
             background: transparent;
             margin: 30px 20px 0;
             border-radius: 10%;
             font-size: 20px;
         }
-        .button:hover{
+        button:hover{
             background-color: lightgrey;
             border-radius: 10%;
         }
